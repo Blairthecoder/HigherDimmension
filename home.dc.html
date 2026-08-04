@@ -30,6 +30,17 @@
 <helmet>
 <link rel="stylesheet" href="_ds/modernist-78f59208-95a7-4955-8dcc-4c6ca0db9005/styles.css">
 <link rel="stylesheet" href="responsive.css">
+<style>
+  @keyframes hd-hero-cf { 0% { opacity:1 } 22% { opacity:1 } 33% { opacity:0 } 89% { opacity:0 } 100% { opacity:1 } }
+  .hd-hero-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; opacity:0 }
+  .hd-hero-photo:first-child { opacity:1 }
+  @media (prefers-reduced-motion: no-preference) {
+    .hd-hero-photo { animation:hd-hero-cf 18s infinite; }
+    .hd-hero-photo:nth-child(1) { animation-delay:-12s }
+    .hd-hero-photo:nth-child(2) { animation-delay:-6s }
+    .hd-hero-photo:nth-child(3) { animation-delay:0s }
+  }
+</style>
 </helmet>
 <div style="background:var(--color-bg);min-height:100vh">
   <dc-import name="nav" active="home" hint-size="100%,72px"></dc-import>
@@ -37,13 +48,21 @@
   <!-- HERO -->
   <section style="position:relative;background:var(--color-text)">
     <div style="position:absolute;inset:0;overflow:hidden">
-      <img src="assets/hero-lobby.jpg" alt="Pastor greeting a family at Higher Dimension Church" style="width:100%;height:100%;object-fit:cover;object-position:center 30%">
+      <img class="hd-hero-photo" src="assets/hero-lobby.jpg" alt="Pastor greeting a family at Higher Dimension Church">
+      <img class="hd-hero-photo" src="assets/photos/img_7252.jpeg" alt="Congregation worshipping at Higher Dimension Church" loading="lazy">
+      <img class="hd-hero-photo" src="assets/photos/img_7260.jpeg" alt="Sunday morning at Higher Dimension Church" loading="lazy">
     </div>
     <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,16,15,0.94) 0%,rgba(18,16,15,0.82) 40%,rgba(18,16,15,0.55) 75%,rgba(18,16,15,0.4) 100%)"></div>
     <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,16,15,0.75) 0%,rgba(18,16,15,0) 45%)"></div>
     <div style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(60px,12vw,150px) var(--space-6) clamp(48px,7vw,90px)">
-      <div style="display:inline-flex;align-items:center;gap:10px;color:var(--color-bg);font-family:var(--font-heading);font-weight:600;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:var(--space-4)">
-        <span style="width:28px;height:2px;background:var(--color-accent);display:inline-block"></span>Houston &amp; Katy, Texas
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:var(--space-4)">
+        <div style="display:inline-flex;align-items:center;gap:10px;color:var(--color-bg);font-family:var(--font-heading);font-weight:600;font-size:13px;letter-spacing:0.14em;text-transform:uppercase">
+          <span style="width:28px;height:2px;background:var(--color-accent);display:inline-block"></span>Houston &amp; Katy, Texas
+        </div>
+        <div role="group" aria-label="Choose your campus" style="display:inline-flex;border:1px solid color-mix(in srgb,var(--color-bg) 45%,transparent)">
+          <button onClick="{{ setHouston }}" style="{{ houstonBtnStyle }}">Houston</button>
+          <button onClick="{{ setKaty }}" style="{{ katyBtnStyle }}">Katy</button>
+        </div>
       </div>
       <h1 style="color:var(--color-bg);font-size:clamp(38px,6vw,76px);line-height:0.96;letter-spacing:-0.03em;max-width:15ch;margin:0">Following Jesus Makes You Better at Life.</h1>
       <p style="color:color-mix(in srgb,var(--color-bg) 82%,transparent);font-size:clamp(16px,1.5vw,20px);max-width:54ch;margin:var(--space-6) 0 var(--space-6)">Too many people settle for a life that is unfulfilling. Higher Dimension inspires people to follow Jesus Christ so that they can experience the fulfilling life God always intended for them.</p>
@@ -51,18 +70,22 @@
         <a href="visit.dc.html" class="btn btn-primary" style="font-size:15px;padding:14px 24px;text-transform:uppercase;letter-spacing:0.04em">Plan Your Visit →</a>
         <a href="https://www.youtube.com/@HigherDimensionChurch/streams" target="_blank" rel="noopener noreferrer" class="btn" style="font-size:15px;padding:14px 24px;text-transform:uppercase;letter-spacing:0.04em;color:var(--color-bg);border:1px solid color-mix(in srgb,var(--color-bg) 55%,transparent)">Watch Online</a>
       </div>
+      <a href="media.dc.html" style="margin-top:var(--space-6);display:inline-flex;align-items:center;gap:12px;text-decoration:none;border:1px solid color-mix(in srgb,var(--color-bg) 40%,transparent);padding:10px 16px;max-width:100%">
+        <span style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;color:var(--color-accent);flex:none">Now Teaching</span>
+        <span style="width:1px;height:16px;background:color-mix(in srgb,var(--color-bg) 30%,transparent);flex:none"></span>
+        <span style="color:var(--color-bg);font-family:var(--font-heading);font-weight:700;font-size:14px">Better: Following Jesus in Everyday Life <span style="opacity:0.65;font-weight:400">· Colossians 3:1–4</span></span>
+        <span style="color:var(--color-accent);font-weight:800;flex:none">→</span>
+      </a>
     </div>
     <!-- service ticker -->
     <div style="position:relative;border-top:2px solid color-mix(in srgb,var(--color-bg) 30%,transparent)">
       <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)">
-        <div style="padding:var(--space-4) var(--space-6);border-right:2px solid color-mix(in srgb,var(--color-bg) 20%,transparent)">
-          <div style="color:var(--color-accent);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600">Houston</div>
-          <div style="color:var(--color-bg);font-family:var(--font-heading);font-weight:800;font-size:19px;margin-top:4px">Sun 8:30 &amp; 11:30 AM</div>
-        </div>
-        <div style="padding:var(--space-4) var(--space-6);border-right:2px solid color-mix(in srgb,var(--color-bg) 20%,transparent)">
-          <div style="color:var(--color-accent);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600">Katy</div>
-          <div style="color:var(--color-bg);font-family:var(--font-heading);font-weight:800;font-size:19px;margin-top:4px">Sun 10:00 AM &amp; 12:45 PM</div>
-        </div>
+        <sc-for list="{{ tickerCampuses }}" as="c" hint-placeholder-count="2">
+          <div style="padding:var(--space-4) var(--space-6);border-right:2px solid color-mix(in srgb,var(--color-bg) 20%,transparent)">
+            <div style="color:var(--color-accent);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600">{{ c.name }}</div>
+            <div style="color:var(--color-bg);font-family:var(--font-heading);font-weight:800;font-size:19px;margin-top:4px">Sun {{ c.times }}</div>
+          </div>
+        </sc-for>
         <div style="padding:var(--space-4) var(--space-6)">
           <div style="color:var(--color-accent);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600">Online</div>
           <div style="color:var(--color-bg);font-family:var(--font-heading);font-weight:800;font-size:19px;margin-top:4px">Sun 8:30 &amp; 11:30 AM</div>
@@ -156,20 +179,15 @@
   <section style="max-width:1320px;margin:0 auto;padding:clamp(56px,7vw,96px) var(--space-6)">
     <h2 style="font-size:clamp(30px,4vw,52px);letter-spacing:-0.02em;margin:0 0 var(--space-6)">Two Campuses. One Church.</h2>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)">
-      <a href="houston.dc.html" style="text-decoration:none;color:var(--color-text);border:2px solid var(--color-text);display:block">
-        <div class="grayscale" style="aspect-ratio:16/10;overflow:hidden;border-bottom:2px solid var(--color-text)"><img src="https://cdn.prod.website-files.com/618aaf6ea7ea6847915287f3/66d8983eef358166986eed12_IMG_54BDD2765EE5-1.jpeg" alt="Houston campus" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
-        <div style="padding:var(--space-6)">
-          <div style="display:flex;justify-content:space-between;align-items:baseline"><h3 style="margin:0;font-size:30px">Houston</h3><span style="color:var(--color-accent);font-weight:800">→</span></div>
-          <p style="margin:var(--space-2) 0 0;color:color-mix(in srgb,var(--color-text) 70%,transparent)">9800 Club Creek Dr, Houston, TX 77036 · Sundays 8:30 &amp; 11:30 AM</p>
-        </div>
-      </a>
-      <a href="katy.dc.html" style="text-decoration:none;color:var(--color-text);border:2px solid var(--color-text);display:block">
-        <div class="grayscale" style="aspect-ratio:16/10;overflow:hidden;border-bottom:2px solid var(--color-text)"><img src="https://cdn.prod.website-files.com/618aaf6ea7ea6847915287f3/66ce0733dac727adf022d7b5_tempImageOKlIPF.jpg" alt="Katy campus" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
-        <div style="padding:var(--space-6)">
-          <div style="display:flex;justify-content:space-between;align-items:baseline"><h3 style="margin:0;font-size:30px">Katy</h3><span style="color:var(--color-accent);font-weight:800">→</span></div>
-          <p style="margin:var(--space-2) 0 0;color:color-mix(in srgb,var(--color-text) 70%,transparent)">1350 N Mason Rd, Katy, TX 77449 · Sundays 10:00 AM &amp; 12:45 PM</p>
-        </div>
-      </a>
+      <sc-for list="{{ campusCards }}" as="c" hint-placeholder-count="2">
+        <a href="{{ c.href }}" style="text-decoration:none;color:var(--color-text);border:2px solid var(--color-text);display:block">
+          <div class="grayscale" style="aspect-ratio:16/10;overflow:hidden;border-bottom:2px solid var(--color-text)"><img src="{{ c.img }}" alt="{{ c.name }} campus" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
+          <div style="padding:var(--space-6)">
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><h3 style="margin:0;font-size:30px">{{ c.name }}</h3><span style="color:var(--color-accent);font-weight:800">→</span></div>
+            <p style="margin:var(--space-2) 0 0;color:color-mix(in srgb,var(--color-text) 70%,transparent)">{{ c.address }} · Sundays {{ c.times }}</p>
+          </div>
+        </a>
+      </sc-for>
     </div>
   </section>
 
@@ -188,6 +206,28 @@
       <div style="grid-row:span 2;overflow:hidden"><img src="assets/photos/img_7268.jpeg" alt="Lifting our voices" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
       <div style="overflow:hidden"><img src="assets/photos/img_7264.jpeg" alt="Taking notes in the Word" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
       <div style="overflow:hidden"><img src="assets/photos/img_7263.jpeg" alt="Praying together" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- STORIES -->
+  <section style="border-top:2px solid var(--color-text)">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(56px,7vw,96px) var(--space-6)">
+      <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;color:var(--color-accent);margin-bottom:var(--space-3)">Stories</div>
+      <h2 style="font-size:clamp(28px,3.6vw,48px);letter-spacing:-0.02em;margin:0 0 var(--space-6);max-width:20ch">Real People. Real Change.</h2>
+      <div style="border-top:2px solid var(--color-text);display:grid;grid-template-columns:repeat(3,1fr)">
+        <div style="padding:var(--space-6);border-right:2px solid var(--color-divider);display:flex;flex-direction:column;justify-content:space-between;min-height:220px">
+          <p style="margin:0;font-size:17px;line-height:1.55;font-family:var(--font-heading);font-weight:600;letter-spacing:-0.01em">"I walked in during the hardest season of my life. My hGroup didn't just pray for me, they showed up."</p>
+          <p style="margin:var(--space-4) 0 0;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 60%,transparent)">— hGroup Member, Houston Campus</p>
+        </div>
+        <div style="padding:var(--space-6);border-right:2px solid var(--color-divider);display:flex;flex-direction:column;justify-content:space-between;min-height:220px">
+          <p style="margin:0;font-size:17px;line-height:1.55;font-family:var(--font-heading);font-weight:600;letter-spacing:-0.01em">"We were new to Katy and didn't know a soul. Six months later this is home, and our kids beg to go to Higher Kids."</p>
+          <p style="margin:var(--space-4) 0 0;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 60%,transparent)">— Family, Katy Campus</p>
+        </div>
+        <div style="padding:var(--space-6);display:flex;flex-direction:column;justify-content:space-between;min-height:220px">
+          <p style="margin:0;font-size:17px;line-height:1.55;font-family:var(--font-heading);font-weight:600;letter-spacing:-0.01em">"I started watching online out of curiosity. A year later I got baptized and joined an H-Team."</p>
+          <p style="margin:var(--space-4) 0 0;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 60%,transparent)">— Online Viewer, now Houston Member</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -236,5 +276,31 @@
   <dc-import name="footer" hint-size="100%,420px"></dc-import>
 </div>
 </x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:3200}}">
+const HOUSTON = { key:'houston', name:'Houston', times:'8:30 & 11:30 AM', address:'9800 Club Creek Dr, Houston, TX 77036', href:'houston.dc.html', img:'https://cdn.prod.website-files.com/618aaf6ea7ea6847915287f3/66d8983eef358166986eed12_IMG_54BDD2765EE5-1.jpeg' };
+const KATY = { key:'katy', name:'Katy', times:'10:00 AM & 12:45 PM', address:'1350 N Mason Rd, Katy, TX 77449', href:'katy.dc.html', img:'https://cdn.prod.website-files.com/618aaf6ea7ea6847915287f3/66ce0733dac727adf022d7b5_tempImageOKlIPF.jpg' };
+class Component extends DCLogic {
+  state = { campus: 'houston' };
+  componentDidMount() {
+    let saved = null;
+    try { saved = localStorage.getItem('hd_campus'); } catch (e) {}
+    if (saved === 'katy' || saved === 'houston') this.setState({ campus: saved });
+  }
+  renderVals() {
+    const campus = this.state.campus;
+    const setCampus = c => { this.setState({ campus: c }); try { localStorage.setItem('hd_campus', c); } catch (e) {} };
+    const btnStyle = active => 'font-family:var(--font-heading);font-weight:700;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 14px;border:0;cursor:pointer;background:' + (active ? 'var(--color-bg)' : 'transparent') + ';color:' + (active ? 'var(--color-text)' : 'var(--color-bg)');
+    const ordered = campus === 'katy' ? [KATY, HOUSTON] : [HOUSTON, KATY];
+    return {
+      setHouston: () => setCampus('houston'),
+      setKaty: () => setCampus('katy'),
+      houstonBtnStyle: btnStyle(campus === 'houston'),
+      katyBtnStyle: btnStyle(campus === 'katy'),
+      tickerCampuses: ordered,
+      campusCards: ordered,
+    };
+  }
+}
+</script>
 </body>
 </html>

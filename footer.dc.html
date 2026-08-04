@@ -56,8 +56,9 @@
       <div>
         <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-3)">Visit</div>
         <div style="font-size:14px;line-height:1.7;color:color-mix(in srgb,var(--color-bg) 78%,transparent)">
-          <strong style="color:var(--color-bg)">Houston</strong><br>9800 Club Creek Dr<br>Houston, TX 77036<br><br>
-          <strong style="color:var(--color-bg)">Katy</strong><br>1350 N Mason Rd<br>Katy, TX 77449<br><br>
+          <sc-for list="{{ visitCampuses }}" as="c" hint-placeholder-count="2">
+            <div style="margin-bottom:12px"><strong style="color:var(--color-bg)">{{ c.name }}</strong><br>{{ c.line1 }}<br>{{ c.line2 }}</div>
+          </sc-for>
           <a href="tel:+17132717217" style="color:var(--color-bg);text-decoration:none">(713) 271-7217</a><br>
           <a href="mailto:info@higherd.net" style="color:var(--color-bg);text-decoration:none">info@higherd.net</a>
         </div>
@@ -71,6 +72,16 @@
   </div>
 </footer>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:420}}"></script>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:420}}">
+const HOUSTON = { name:'Houston', line1:'9800 Club Creek Dr', line2:'Houston, TX 77036' };
+const KATY = { name:'Katy', line1:'1350 N Mason Rd', line2:'Katy, TX 77449' };
+class Component extends DCLogic {
+  renderVals() {
+    let campus = 'houston';
+    try { const saved = localStorage.getItem('hd_campus'); if (saved === 'katy' || saved === 'houston') campus = saved; } catch (e) {}
+    return { visitCampuses: campus === 'katy' ? [KATY, HOUSTON] : [HOUSTON, KATY] };
+  }
+}
+</script>
 </body>
 </html>

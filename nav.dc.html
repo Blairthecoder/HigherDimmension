@@ -15,7 +15,25 @@
 <helmet>
 <link rel="stylesheet" href="_ds/modernist-78f59208-95a7-4955-8dcc-4c6ca0db9005/styles.css">
 <link rel="stylesheet" href="responsive.css">
+<style>
+  @keyframes hd-pulse { 0%,100% { opacity:1 } 50% { opacity:.35 } }
+  .hd-live-dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:#e0322f; margin-right:6px; animation:hd-pulse 1.4s ease-in-out infinite }
+  #search-results a:hover { background:color-mix(in srgb,var(--color-text) 6%,transparent) }
+  .mobile-cta-bar { display:none }
+  @media (max-width:900px) {
+    .mobile-cta-bar { display:flex }
+  }
+</style>
 </helmet>
+
+<div id="app-banner" ref="{{ appBanner }}" style="display:none;align-items:center;justify-content:space-between;gap:12px;background:var(--color-text);color:var(--color-bg);padding:9px var(--space-4);font-size:12.5px;position:relative;z-index:51">
+  <span style="line-height:1.3">Get the Church Center app for the fastest way to watch, give &amp; connect.</span>
+  <div style="display:flex;align-items:center;gap:14px;flex:none">
+    <a href="https://higherd.churchcenter.com/setup" target="_blank" rel="noopener noreferrer" style="color:var(--color-accent-300,var(--color-bg));font-family:var(--font-heading);font-weight:700;text-decoration:none;white-space:nowrap;font-size:12.5px">Get App →</a>
+    <button onClick="{{ dismissBanner }}" aria-label="Dismiss" style="background:transparent;border:0;color:var(--color-bg);font-size:15px;line-height:1;cursor:pointer;padding:2px">✕</button>
+  </div>
+</div>
+
 <header style="position:sticky;top:0;z-index:50;background:var(--color-bg);border-bottom:2px solid var(--color-text)">
   <div style="display:flex;align-items:center;gap:var(--space-6);max-width:1320px;margin:0 auto;padding:14px var(--space-6)">
     <a href="home.dc.html" style="display:flex;align-items:center;text-decoration:none;color:var(--color-text);margin-right:auto">
@@ -28,9 +46,12 @@
       <a href="hteams.dc.html" ref="{{ l3 }}" style="text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:0.04em">H-Teams</a>
       <a href="ministries.dc.html" ref="{{ l4 }}" style="text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:0.04em">Ministries</a>
       <a href="events.dc.html" ref="{{ l5 }}" style="text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:0.04em">Events</a>
-      <a href="media.dc.html" style="text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:0.04em">Watch</a>
+      <a href="media.dc.html" ref="{{ watchDesk }}" data-default="Watch" style="text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:0.04em;display:flex;align-items:center">Watch</a>
       <a href="giving.dc.html" class="btn btn-primary" style="text-transform:uppercase;letter-spacing:0.04em">Give</a>
     </nav>
+    <button onClick="{{ toggleSearch }}" aria-label="Search the site" style="background:transparent;border:2px solid var(--color-text);width:40px;height:40px;flex:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--color-text)">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </button>
     <button data-mob onClick="{{ toggle }}" aria-label="Menu" aria-expanded="{{ open }}" aria-controls="mobile-menu" style="display:none;background:transparent;border:2px solid var(--color-text);width:44px;height:44px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px">
       <span style="width:20px;height:2px;background:var(--color-text);display:block"></span>
       <span style="width:20px;height:2px;background:var(--color-text);display:block"></span>
@@ -46,17 +67,72 @@
         <a href="hteams.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">H-Teams</a>
         <a href="ministries.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">Ministries</a>
         <a href="events.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">Events</a>
-        <a href="media.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">Watch &amp; Listen</a>
+        <a href="media.dc.html" ref="{{ watchMob }}" data-default="Watch &amp; Listen" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider);display:flex;align-items:center">Watch &amp; Listen</a>
         <a href="nextsteps.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">Next Steps</a>
         <a href="giving.dc.html" class="btn btn-primary btn-block" style="text-transform:uppercase;margin-top:var(--space-3);justify-content:center">Give</a>
       </div>
     </div>
   </sc-if>
 </header>
+
+<div class="mobile-cta-bar" style="position:fixed;left:0;right:0;bottom:0;z-index:55;border-top:2px solid var(--color-text);background:var(--color-bg)">
+  <a href="visit.dc.html" style="flex:1;text-decoration:none;color:var(--color-text);text-align:center;padding:11px 4px;font-family:var(--font-heading);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:0.03em;border-right:1px solid var(--color-divider)">Plan Visit</a>
+  <a href="media.dc.html" ref="{{ watchBar }}" data-default="Watch" style="flex:1;text-decoration:none;color:var(--color-text);text-align:center;padding:11px 4px;font-family:var(--font-heading);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:0.03em;border-right:1px solid var(--color-divider);display:flex;align-items:center;justify-content:center">Watch</a>
+  <a href="giving.dc.html" style="flex:1;text-decoration:none;color:var(--color-bg);background:var(--color-accent);text-align:center;padding:11px 4px;font-family:var(--font-heading);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:0.03em">Give</a>
+</div>
+
+<sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ toggleSearch }}" style="position:fixed;inset:0;z-index:100;background:color-mix(in srgb,#000 65%,transparent);display:flex;align-items:flex-start;justify-content:center;padding:min(14vh,110px) var(--space-4) var(--space-4)">
+    <div onClick="{{ stopClick }}" style="background:var(--color-bg);width:min(560px,100%);border:2px solid var(--color-text);box-shadow:var(--shadow-lg);max-height:74vh;display:flex;flex-direction:column">
+      <div style="padding:var(--space-4);border-bottom:2px solid var(--color-text);display:flex;gap:10px;align-items:center;flex:none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="flex:none;color:var(--color-text);opacity:0.6"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input ref="{{ searchInput }}" onInput="{{ onSearchInput }}" placeholder="Search pages, ministries, events…" aria-label="Search" style="flex:1;border:0;background:transparent;font:inherit;font-size:16px;outline:none;color:var(--color-text)">
+        <button onClick="{{ toggleSearch }}" aria-label="Close search" style="background:transparent;border:0;font-size:18px;cursor:pointer;color:var(--color-text);flex:none">✕</button>
+      </div>
+      <div id="search-results" ref="{{ resultsBox }}" style="overflow:auto"></div>
+    </div>
+  </div>
+</sc-if>
+
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:72},&quot;active&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;,&quot;default&quot;:&quot;home&quot;}}">
+const SEARCH_INDEX = [
+  { title: "Home", cat: "Page", url: "home.dc.html", kw: "home main" },
+  { title: "About", cat: "Page", url: "about.dc.html", kw: "who we are story leadership pastors" },
+  { title: "Plan Your Visit", cat: "Page", url: "visit.dc.html", kw: "visit new here first time directions what to expect" },
+  { title: "Core Beliefs", cat: "Page", url: "beliefs.dc.html", kw: "beliefs doctrine statement of faith" },
+  { title: "Connect Groups", cat: "Page", url: "groups.dc.html", kw: "small group community hgroups" },
+  { title: "H-Teams", cat: "Page", url: "hteams.dc.html", kw: "serve volunteer team" },
+  { title: "Ministries", cat: "Page", url: "ministries.dc.html", kw: "kids youth higher kids higher youth children" },
+  { title: "Events", cat: "Page", url: "events.dc.html", kw: "calendar happenings upcoming" },
+  { title: "Watch & Listen", cat: "Page", url: "media.dc.html", kw: "sermons messages watch live stream youtube series" },
+  { title: "Giving", cat: "Page", url: "giving.dc.html", kw: "give tithe donate offering pushpay" },
+  { title: "Next Steps", cat: "Page", url: "nextsteps.dc.html", kw: "baptism membership grow" },
+  { title: "Our Team", cat: "Page", url: "teampage.dc.html", kw: "staff pastors leadership" },
+  { title: "Houston Campus", cat: "Campus", url: "houston.dc.html", kw: "club creek 77036 address directions" },
+  { title: "Katy Campus", cat: "Campus", url: "katy.dc.html", kw: "mason road 77449 address directions" },
+  { title: "The Answer Class", cat: "Event · Aug 15", url: "theanswer.dc.html", kw: "relationships class marriage dating" },
+  { title: "Young Adult Bible Study", cat: "Event · Aug 7", url: "events.dc.html", kw: "bible study young adult" },
+  { title: "Do Good: Back 2 School Edition", cat: "Event · Aug 8", url: "events.dc.html", kw: "outreach school supplies do good" },
+  { title: "hTrack (New Member Orientation)", cat: "Event · Aug 16", url: "events.dc.html", kw: "membership orientation new member htrack" },
+  { title: "Family Workshop", cat: "Event · Aug 29", url: "events.dc.html", kw: "family workshop" },
+  { title: "Family Portraits", cat: "Event · Aug 30", url: "events.dc.html", kw: "family portraits photos" },
+  { title: "Church Center App", cat: "Connect", url: "https://higherd.churchcenter.com/home", kw: "app download planning center" },
+];
+const LIVE_WINDOWS = [[8*60+30, 9*60+45], [11*60+30, 12*60+45]];
+function isServiceLive() {
+  try {
+    const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date());
+    const get = t => (parts.find(p => p.type === t) || {}).value;
+    if (get('weekday') !== 'Sun') return false;
+    let h = parseInt(get('hour'), 10); if (h === 24) h = 0;
+    const m = parseInt(get('minute'), 10);
+    const mins = h * 60 + m;
+    return LIVE_WINDOWS.some(([s, e]) => mins >= s && mins < e);
+  } catch (e) { return false; }
+}
 class Component extends DCLogic {
-  state = { open: false };
+  state = { open: false, searchOpen: false };
   componentDidMount() {
     const active = this.props.active;
     const map = { about:0, visit:1, groups:2, hteams:3, ministries:4, events:5 };
@@ -72,17 +148,80 @@ class Component extends DCLogic {
       if (desk) desk.style.display = mq.matches ? 'none' : 'flex';
       if (mob) mob.style.display = mq.matches ? 'flex' : 'none';
       if (!mq.matches && this.state.open) this.setState({ open:false });
+      if (this._appBanner) {
+        let dismissed = false;
+        try { dismissed = localStorage.getItem('hd_appBannerDismissed') === '1'; } catch (e) {}
+        this._appBanner.style.display = (mq.matches && !dismissed) ? 'flex' : 'none';
+      }
     };
     this._mq = mq; this._apply = apply;
     mq.addEventListener('change', apply); apply();
+
+    const applyLive = () => {
+      const live = isServiceLive();
+      [this._watchDesk, this._watchMob, this._watchBar].forEach(el => {
+        if (!el) return;
+        if (live) {
+          el.innerHTML = '<span class="hd-live-dot"></span>Watch Live';
+          el.href = 'https://www.youtube.com/@HigherDimensionChurch/streams';
+          el.target = '_blank'; el.rel = 'noopener noreferrer';
+        } else {
+          el.textContent = el.getAttribute('data-default') || '';
+          el.href = 'media.dc.html';
+          el.removeAttribute('target'); el.removeAttribute('rel');
+        }
+      });
+    };
+    applyLive();
+    this._liveTimer = setInterval(applyLive, 60000);
+
+    this._onKeydown = e => { if (e.key === 'Escape' && this.state.searchOpen) this.setState({ searchOpen:false }); };
+    document.addEventListener('keydown', this._onKeydown);
   }
-  componentWillUnmount() { if (this._mq && this._apply) this._mq.removeEventListener('change', this._apply); }
+  componentWillUnmount() {
+    if (this._mq && this._apply) this._mq.removeEventListener('change', this._apply);
+    if (this._liveTimer) clearInterval(this._liveTimer);
+    if (this._onKeydown) document.removeEventListener('keydown', this._onKeydown);
+  }
+  renderResults(q) {
+    if (!this._resultsBox) return;
+    const query = (q || '').trim().toLowerCase();
+    let items;
+    if (!query) {
+      items = SEARCH_INDEX.slice(0, 8);
+    } else {
+      items = SEARCH_INDEX.filter(it => (it.title + ' ' + it.cat + ' ' + it.kw).toLowerCase().includes(query)).slice(0, 10);
+    }
+    if (!items.length) {
+      this._resultsBox.innerHTML = '<div style="padding:28px var(--space-4);text-align:center;color:color-mix(in srgb,var(--color-text) 55%,transparent);font-size:14px">No results. Try “Visit,” “Events,” or “Give.”</div>';
+      return;
+    }
+    const label = query ? '' : '<div style="padding:12px var(--space-4) 4px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Popular</div>';
+    this._resultsBox.innerHTML = label + items.map(it => (
+      '<a href="' + it.url + '" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:var(--color-text);padding:13px var(--space-4);border-bottom:1px solid var(--color-divider)">' +
+        '<span style="font-family:var(--font-heading);font-weight:700;font-size:15px">' + it.title + '</span>' +
+        '<span style="font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--color-accent);flex:none">' + it.cat + '</span>' +
+      '</a>'
+    )).join('');
+  }
   renderVals() {
     return {
       open: this.state.open,
       toggle: () => this.setState(s => ({ open: !s.open })),
+      searchOpen: this.state.searchOpen,
+      toggleSearch: () => this.setState(s => ({ searchOpen: !s.searchOpen }), () => { if (this.state.searchOpen) this.renderResults(''); }),
+      stopClick: e => e.stopPropagation(),
+      onSearchInput: e => this.renderResults(e.target.value),
+      dismissBanner: () => {
+        if (this._appBanner) this._appBanner.style.display = 'none';
+        try { localStorage.setItem('hd_appBannerDismissed', '1'); } catch (e) {}
+      },
       l0: e => this._l0 = e, l1: e => this._l1 = e, l2: e => this._l2 = e,
       l3: e => this._l3 = e, l4: e => this._l4 = e, l5: e => this._l5 = e,
+      watchDesk: e => this._watchDesk = e, watchMob: e => this._watchMob = e, watchBar: e => this._watchBar = e,
+      appBanner: e => this._appBanner = e,
+      searchInput: e => { this._searchInput = e; if (e) e.focus(); },
+      resultsBox: e => this._resultsBox = e,
     };
   }
 }

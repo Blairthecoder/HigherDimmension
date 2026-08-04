@@ -88,3 +88,9 @@
   h1 { letter-spacing: -0.02em; }
   img { height: auto; }
 }
+
+/* Room for the fixed mobile CTA bar (Plan Visit / Watch / Give) added in nav.dc.html
+   so it never sits on top of footer content. */
+@media (max-width: 900px) {
+  body { padding-bottom: 54px; }
+}
