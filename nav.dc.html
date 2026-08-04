@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/hd-logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/hd-logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -26,14 +30,14 @@
       <a href="media.dc.html" style="text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:0.04em">Watch</a>
       <a href="giving.dc.html" class="btn btn-primary" style="text-transform:uppercase;letter-spacing:0.04em">Give</a>
     </nav>
-    <button data-mob onClick="{{ toggle }}" aria-label="Menu" style="display:none;background:transparent;border:2px solid var(--color-text);width:44px;height:44px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px">
+    <button data-mob onClick="{{ toggle }}" aria-label="Menu" aria-expanded="{{ open }}" aria-controls="mobile-menu" style="display:none;background:transparent;border:2px solid var(--color-text);width:44px;height:44px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px">
       <span style="width:20px;height:2px;background:var(--color-text);display:block"></span>
       <span style="width:20px;height:2px;background:var(--color-text);display:block"></span>
       <span style="width:20px;height:2px;background:var(--color-text);display:block"></span>
     </button>
   </div>
   <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
-    <div style="border-top:2px solid var(--color-text);background:var(--color-bg)">
+    <div id="mobile-menu" style="border-top:2px solid var(--color-text);background:var(--color-bg)">
       <div style="display:flex;flex-direction:column;padding:var(--space-2) var(--space-6)">
         <a href="about.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">About</a>
         <a href="visit.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">Visit</a>
