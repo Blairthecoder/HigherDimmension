@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-78f59208-95a7-4955-8dcc-4c6ca0db9005/styles.css">
+<link rel="stylesheet" href="responsive.css">
+</helmet>
+<header style="position:sticky;top:0;z-index:50;background:var(--color-bg);border-bottom:2px solid var(--color-text)">
+  <div style="display:flex;align-items:center;gap:var(--space-6);max-width:1320px;margin:0 auto;padding:14px var(--space-6)">
+    <a href="Home.dc.html" style="display:flex;align-items:center;text-decoration:none;color:var(--color-text);margin-right:auto">
+      <img src="assets/hd-logo.svg" alt="Higher Dimension" style="height:42px;width:auto;display:block">
+    </a>
+    <nav data-desk style="display:flex;align-items:center;gap:26px">
+      <a href="About.dc.html" ref="{{ l0 }}" style="text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:0.04em">About</a>
+      <a href="Visit.dc.html" ref="{{ l1 }}" style="text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:0.04em">Visit</a>
+      <a href="Groups.dc.html" ref="{{ l2 }}" style="text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:0.04em">Groups</a>
+      <a href="HTeams.dc.html" ref="{{ l3 }}" style="text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:0.04em">H-Teams</a>
+      <a href="Ministries.dc.html" ref="{{ l4 }}" style="text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:0.04em">Ministries</a>
+      <a href="Events.dc.html" ref="{{ l5 }}" style="text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:0.04em">Events</a>
+      <a href="Media.dc.html" style="text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:0.04em">Watch</a>
+      <a href="Giving.dc.html" class="btn btn-primary" style="text-transform:uppercase;letter-spacing:0.04em">Give</a>
+    </nav>
+    <button data-mob onClick="{{ toggle }}" aria-label="Menu" style="display:none;background:transparent;border:2px solid var(--color-text);width:44px;height:44px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px">
+      <span style="width:20px;height:2px;background:var(--color-text);display:block"></span>
+      <span style="width:20px;height:2px;background:var(--color-text);display:block"></span>
+      <span style="width:20px;height:2px;background:var(--color-text);display:block"></span>
+    </button>
+  </div>
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+    <div style="border-top:2px solid var(--color-text);background:var(--color-bg)">
+      <div style="display:flex;flex-direction:column;padding:var(--space-2) var(--space-6)">
+        <a href="About.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">About</a>
+        <a href="Visit.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">Visit</a>
+        <a href="Groups.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">Groups</a>
+        <a href="HTeams.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">H-Teams</a>
+        <a href="Ministries.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">Ministries</a>
+        <a href="Events.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">Events</a>
+        <a href="Media.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">Watch &amp; Listen</a>
+        <a href="NextSteps.dc.html" style="padding:14px 0;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-weight:700;font-size:18px;text-transform:uppercase;border-bottom:1px solid var(--color-divider)">Next Steps</a>
+        <a href="Giving.dc.html" class="btn btn-primary btn-block" style="text-transform:uppercase;margin-top:var(--space-3);justify-content:center">Give</a>
+      </div>
+    </div>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:72},&quot;active&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;,&quot;default&quot;:&quot;home&quot;}}">
+class Component extends DCLogic {
+  state = { open: false };
+  componentDidMount() {
+    const active = this.props.active;
+    const map = { about:0, visit:1, groups:2, hteams:3, ministries:4, events:5 };
+    const i = map[active];
+    if (i !== undefined && this['_l'+i]) {
+      this['_l'+i].style.color = 'var(--color-accent)';
+      this['_l'+i].setAttribute('aria-current','page');
+    }
+    const mq = window.matchMedia('(max-width: 900px)');
+    const apply = () => {
+      const desk = this.el ? this.el.querySelector('[data-desk]') : document.querySelector('[data-desk]');
+      const mob = this.el ? this.el.querySelector('[data-mob]') : document.querySelector('[data-mob]');
+      if (desk) desk.style.display = mq.matches ? 'none' : 'flex';
+      if (mob) mob.style.display = mq.matches ? 'flex' : 'none';
+      if (!mq.matches && this.state.open) this.setState({ open:false });
+    };
+    this._mq = mq; this._apply = apply;
+    mq.addEventListener('change', apply); apply();
+  }
+  componentWillUnmount() { if (this._mq && this._apply) this._mq.removeEventListener('change', this._apply); }
+  renderVals() {
+    return {
+      open: this.state.open,
+      toggle: () => this.setState(s => ({ open: !s.open })),
+      l0: e => this._l0 = e, l1: e => this._l1 = e, l2: e => this._l2 = e,
+      l3: e => this._l3 = e, l4: e => this._l4 = e, l5: e => this._l5 = e,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+/* Brand accent override — warm tan/gold replacing the default orange-red.
+   Loaded after the design-system stylesheet on every page, so these :root
+   values win for var(--color-accent) and its numbered scale everywhere. */
+:root {
+  --color-accent: #b28a3f;
+  --color-accent-2: #caa663;
+  --color-accent-100: #f7f0e2;
+  --color-accent-200: #ecdcbd;
+  --color-accent-300: #ddc490;
+  --color-accent-400: #cca75f;
+  --color-accent-500: #b28a3f;
+  --color-accent-600: #977133;
+  --color-accent-700: #775828;
+  --color-accent-800: #574020;
+  --color-accent-900: #3a2c18;
+  --color-accent-2-100: #f7f1e5;
+  --color-accent-2-800: #574020;
+}
+
+/* Site-wide mobile responsiveness.
+   Media queries cannot be expressed as inline styles, so this shared sheet
+   collapses the fixed multi-column grids to a single column on small screens
+   and drops the vertical dividers that would otherwise sit on a full-width edge.
+   NOTE: the runtime re-serializes inline styles WITH spaces
+   (e.g. "grid-template-columns: repeat(3, 1fr)"), so selectors match that form. */
+
+@media (max-width: 900px) {
+  /* Collapse every multi-column grid used across the site to one column.
+     Covers plain repeats, even splits, and all the weighted fr ratios
+     (1fr 1.1fr, 1.15fr 1fr, 1.08fr 1fr, minmax(...) 1fr, etc.). */
+  [style*="repeat(3, 1fr)"],
+  [style*="repeat(2, 1fr)"],
+  [style*="1fr 1fr"],
+  [style*="1.1fr 1fr"],
+  [style*="1fr 1.1fr"],
+  [style*="1.15fr 1fr"],
+  [style*="1fr 1.15fr"],
+  [style*="1.08fr 1fr"],
+  [style*="1fr 1.08fr"],
+  [style*="1.6fr 1fr"],
+  [style*="1.4fr 1fr 1fr 1fr"],
+  [style*="minmax(220px, 340px)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* The photo mosaic stays a grid but halves to two columns. */
+  [style*="repeat(4, 1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* When stacked, a vertical divider sits on a full-width edge and a fixed
+     min-height crops the image — drop both so photos render whole. */
+  [style*="repeat(4, 1fr)"] > *,
+  [style*="repeat(3, 1fr)"] > *,
+  [style*="repeat(2, 1fr)"] > *,
+  [style*="1fr 1fr"] > *,
+  [style*="1.1fr 1fr"] > *,
+  [style*="1fr 1.1fr"] > *,
+  [style*="1.15fr 1fr"] > *,
+  [style*="1fr 1.15fr"] > *,
+  [style*="1.08fr 1fr"] > *,
+  [style*="1fr 1.08fr"] > *,
+  [style*="1.6fr 1fr"] > *,
+  [style*="1.4fr 1fr 1fr 1fr"] > * {
+    border-right: none !important;
+  }
+
+  /* Image panels that relied on a tall min-height to match a text column
+     no longer need to be forced tall once stacked — let them size to the
+     photo so nothing is cropped. */
+  [style*="min-height: 400px"],
+  [style*="min-height: 420px"],
+  [style*="min-height: 520px"] {
+    min-height: 0 !important;
+  }
+  [style*="min-height: 400px"] > img,
+  [style*="min-height: 420px"] > img,
+  [style*="min-height: 520px"] > img {
+    position: static !important;
+    height: auto !important;
+    max-height: 60vh;
+    object-fit: contain !important;
+  }
+}
+
+/* Phones: ease the largest display type and let the photo mosaic breathe. */
+@media (max-width: 520px) {
+  h1 { letter-spacing: -0.02em; }
+  img { height: auto; }
+}
