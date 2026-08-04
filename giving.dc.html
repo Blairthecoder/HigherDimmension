@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="responsive.css">
 </helmet>
 <div style="background:var(--color-bg);min-height:100vh">
-  <dc-import name="Nav" active="giving" hint-size="100%,72px"></dc-import>
+  <dc-import name="nav" active="giving" hint-size="100%,72px"></dc-import>
 
   <section style="border-bottom:2px solid var(--color-text)">
     <div style="max-width:1320px;margin:0 auto;padding:clamp(48px,7vw,96px) var(--space-6)">
@@ -47,8 +47,8 @@
           <div style="padding:var(--space-4) 0;border-bottom:2px solid var(--color-divider)"><h3 style="margin:0 0 4px;font-size:20px">In Person</h3><p style="margin:0;color:color-mix(in srgb,var(--color-text) 70%,transparent)">Drop your gift in the box at either campus on Sunday.</p></div>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--space-6)">
-          <a href="https://pushpay.com/g/higherd" target="_blank" class="btn btn-primary" style="padding:14px 24px;font-size:15px;text-transform:uppercase;letter-spacing:0.04em">Give Now →</a>
-          <a href="https://higherd.churchcenter.com/giving" target="_blank" class="btn btn-secondary" style="padding:14px 24px;font-size:15px;text-transform:uppercase;letter-spacing:0.04em">Give in Church Center</a>
+          <a href="https://pushpay.com/g/higherd" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding:14px 24px;font-size:15px;text-transform:uppercase;letter-spacing:0.04em">Give Now →</a>
+          <a href="https://higherd.churchcenter.com/giving" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:14px 24px;font-size:15px;text-transform:uppercase;letter-spacing:0.04em">Give in Church Center</a>
         </div>
       </div>
       <div style="display:flex;flex-direction:column">
@@ -68,7 +68,7 @@
     </div>
   </section>
 
-  <dc-import name="Footer" hint-size="100%,420px"></dc-import>
+  <dc-import name="footer" hint-size="100%,420px"></dc-import>
 </div>
 </x-dc>
 </body>

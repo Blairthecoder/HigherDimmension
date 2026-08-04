@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="responsive.css">
 </helmet>
 <div style="background:var(--color-bg);min-height:100vh">
-  <dc-import name="Nav" active="visit" hint-size="100%,72px"></dc-import>
+  <dc-import name="nav" active="visit" hint-size="100%,72px"></dc-import>
 
   <section style="border-bottom:2px solid var(--color-text)">
     <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:clamp(360px,52vh,560px)">
@@ -22,8 +22,8 @@
         <div style="margin-top:var(--space-6);font-size:20px;font-family:var(--font-heading);font-weight:800">Sundays {{ times }}</div>
         <p style="margin:var(--space-2) 0 0;color:color-mix(in srgb,var(--color-text) 70%,transparent)">{{ street }}<br>{{ cityzip }}</p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--space-6)">
-          <a href="{{ formUrl }}" target="_blank" class="btn btn-primary" style="padding:13px 22px;text-transform:uppercase;letter-spacing:0.04em">Plan Your Visit →</a>
-          <a href="{{ mapLink }}" target="_blank" class="btn btn-secondary" style="padding:13px 22px;text-transform:uppercase;letter-spacing:0.04em">Get Directions</a>
+          <a href="{{ formUrl }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding:13px 22px;text-transform:uppercase;letter-spacing:0.04em">Plan Your Visit →</a>
+          <a href="{{ mapLink }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:13px 22px;text-transform:uppercase;letter-spacing:0.04em">Get Directions</a>
         </div>
       </div>
       <div class="grayscale" style="overflow:hidden"><img src="{{ photo }}" alt="{{ campus }} campus" style="width:100%;height:100%;object-fit:cover"></div>
@@ -54,13 +54,13 @@
         <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;color:var(--color-accent);margin-bottom:var(--space-3)">Find Us</div>
         <h2 style="font-size:clamp(26px,3vw,40px);letter-spacing:-0.02em;margin:0">{{ campus }}</h2>
         <p style="margin:var(--space-3) 0 var(--space-4);color:color-mix(in srgb,var(--color-text) 70%,transparent)">{{ street }}<br>{{ cityzip }}</p>
-        <a href="{{ mapLink }}" target="_blank" class="btn btn-primary" style="padding:13px 22px;text-transform:uppercase;letter-spacing:0.04em">Open in Maps →</a>
+        <a href="{{ mapLink }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding:13px 22px;text-transform:uppercase;letter-spacing:0.04em">Open in Maps →</a>
       </div>
       <iframe src="{{ mapEmbed }}" title="Map to {{ campus }}" style="border:0;width:100%;min-height:360px;filter:grayscale(1) contrast(1.05)" loading="lazy"></iframe>
     </div>
   </section>
 
-  <dc-import name="Footer" hint-size="100%,420px"></dc-import>
+  <dc-import name="footer" hint-size="100%,420px"></dc-import>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;campus&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;default&quot;:&quot;Houston&quot;},&quot;region&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;default&quot;:&quot;Southwest Houston&quot;},&quot;times&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;default&quot;:&quot;8:30 &amp; 11:30 AM&quot;},&quot;street&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;default&quot;:&quot;9800 Club Creek Dr&quot;},&quot;cityzip&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;default&quot;:&quot;Houston, TX 77036&quot;},&quot;photo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;},&quot;formUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;},&quot;mapLink&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;},&quot;mapEmbed&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;}}"></script>
