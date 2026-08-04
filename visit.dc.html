@@ -49,19 +49,22 @@
   <section style="border-bottom:2px solid var(--color-text)">
     <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)">
       <sc-for list="{{ campusCards }}" as="c" hint-placeholder-count="2">
-        <a href="{{ c.href }}" style="text-decoration:none;color:var(--color-text);padding:var(--space-8) var(--space-6);border-right:2px solid var(--color-text);display:block">
-          <div style="color:var(--color-accent);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600">{{ c.name }} Campus</div>
+        <div style="color:var(--color-text);padding:var(--space-8) var(--space-6);border-right:2px solid var(--color-text)">
+          <div style="color:var(--color-accent-700);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600">{{ c.name }} Campus</div>
           <div style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,3vw,40px);margin:var(--space-2) 0">{{ c.times }}</div>
           <p style="margin:0;color:color-mix(in srgb,var(--color-text) 65%,transparent)">{{ c.address }}</p>
-          <span style="display:inline-block;margin-top:var(--space-3);color:var(--color-accent);font-weight:700">Campus details →</span>
-        </a>
+          <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:var(--space-3)">
+            <a href="{{ c.href }}" style="text-decoration:none;color:var(--color-accent-700);font-weight:700">Campus details →</a>
+            <a href="{{ c.mapLink }}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:var(--color-accent-700);font-weight:700">Get Directions →</a>
+          </div>
+        </div>
       </sc-for>
-      <a href="https://www.youtube.com/@HigherDimensionChurch/streams" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:var(--color-text);padding:var(--space-8) var(--space-6);display:block">
-        <div style="color:var(--color-accent);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600">Online</div>
+      <div style="color:var(--color-text);padding:var(--space-8) var(--space-6)">
+        <div style="color:var(--color-accent-700);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600">Online</div>
         <div style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,3vw,40px);margin:var(--space-2) 0">8:30 &amp; 11:30 AM</div>
         <p style="margin:0;color:color-mix(in srgb,var(--color-text) 65%,transparent)">Stream live on YouTube from anywhere.</p>
-        <span style="display:inline-block;margin-top:var(--space-3);color:var(--color-accent);font-weight:700">Watch online →</span>
-      </a>
+        <a href="https://www.youtube.com/@HigherDimensionChurch/streams" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:var(--space-3);text-decoration:none;color:var(--color-accent-700);font-weight:700">Watch online →</a>
+      </div>
     </div>
   </section>
 
@@ -102,8 +105,8 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:1400}}">
-const HOUSTON = { name:'Houston', times:'8:30 & 11:30 AM', address:'9800 Club Creek Dr, Houston, TX 77036', href:'houston.dc.html' };
-const KATY = { name:'Katy', times:'10:00 AM & 12:45 PM', address:'1350 N Mason Rd, Katy, TX 77449', href:'katy.dc.html' };
+const HOUSTON = { name:'Houston', times:'8:30 & 11:30 AM', address:'9800 Club Creek Dr, Houston, TX 77036', href:'houston.dc.html', mapLink:'https://www.google.com/maps/search/?api=1&query=9800+Club+Creek+Dr+Houston+TX+77036' };
+const KATY = { name:'Katy', times:'10:00 AM & 12:45 PM', address:'1350 N Mason Rd, Katy, TX 77449', href:'katy.dc.html', mapLink:'https://www.google.com/maps/search/?api=1&query=1350+N+Mason+Rd+Katy+TX+77449' };
 class Component extends DCLogic {
   renderVals() {
     let campus = 'houston';

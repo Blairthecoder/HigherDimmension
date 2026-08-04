@@ -71,19 +71,35 @@
         <img src="assets/photos/img_7277.jpeg" alt="August at Higher Dimension, monthly event lineup" style="width:100%;height:auto;display:block">
       </div>
       <div style="padding:clamp(32px,4vw,64px) var(--space-6);display:flex;flex-direction:column;justify-content:center">
-        <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:var(--color-accent);margin-bottom:var(--space-2)">This Month</div>
+        <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);margin-bottom:var(--space-2)">This Month</div>
         <h2 style="font-size:clamp(28px,3.6vw,46px);letter-spacing:-0.02em;margin:0 0 var(--space-5)">August at Higher Dimension</h2>
         <div style="border-top:2px solid var(--color-text)">
           <sc-for list="{{ month }}" as="e" hint-placeholder-count="6">
             <div style="display:flex;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--color-divider)">
-              <span style="flex:none;font-family:var(--font-heading);font-weight:800;font-size:15px;color:var(--color-accent);min-width:52px;letter-spacing:0.02em">{{ e.date }}</span>
+              <span style="flex:none;font-family:var(--font-heading);font-weight:800;font-size:15px;color:var(--color-accent-700);min-width:52px;letter-spacing:0.02em">{{ e.date }}</span>
               <span style="font-size:16px;color:var(--color-text)">{{ e.title }}</span>
             </div>
           </sc-for>
         </div>
-        <p style="margin:var(--space-4) 0 var(--space-5);font-size:14px;color:color-mix(in srgb,var(--color-text) 60%,transparent)">There's a seat for you all month long. Full details and registration live in the Church Center app.</p>
+        <p style="margin:var(--space-4) 0 var(--space-5);font-size:14px;color:color-mix(in srgb,var(--color-text) 60%,transparent)">These are the highlights, curated by our team. For the complete, always-current schedule, see the live calendar below.</p>
         <div><a href="https://higherd.churchcenter.com/calendar?view=gallery" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding:13px 22px;text-transform:uppercase;letter-spacing:0.04em">See Every Event →</a></div>
       </div>
+    </div>
+  </section>
+
+  <!-- LIVE CALENDAR -->
+  <section style="border-bottom:2px solid var(--color-text)">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(40px,5vw,64px) var(--space-6)">
+      <div style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:var(--space-4);margin-bottom:var(--space-5)">
+        <div>
+          <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);margin-bottom:var(--space-2)">Always Current</div>
+          <h2 style="font-size:clamp(24px,2.8vw,36px);letter-spacing:-0.02em;margin:0">Live Calendar</h2>
+        </div>
+      </div>
+      <div style="border:2px solid var(--color-text);background:#fff">
+        <iframe src="https://higherd.churchcenter.com/calendar?view=gallery" title="Higher Dimension Church live calendar" style="border:0;width:100%;min-height:640px;display:block" loading="lazy"></iframe>
+      </div>
+      <p style="margin:var(--space-3) 0 0;font-size:14px;color:color-mix(in srgb,var(--color-text) 60%,transparent)">Calendar not loading? <a href="https://higherd.churchcenter.com/calendar?view=gallery" target="_blank" rel="noopener noreferrer" style="font-weight:700;color:var(--color-accent-700)">Open it in a new tab →</a></p>
     </div>
   </section>
 

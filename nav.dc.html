@@ -78,7 +78,7 @@
 <div class="mobile-cta-bar" style="position:fixed;left:0;right:0;bottom:0;z-index:55;border-top:2px solid var(--color-text);background:var(--color-bg)">
   <a href="visit.dc.html" style="flex:1;text-decoration:none;color:var(--color-text);text-align:center;padding:11px 4px;font-family:var(--font-heading);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:0.03em;border-right:1px solid var(--color-divider)">Plan Visit</a>
   <a href="media.dc.html" ref="{{ watchBar }}" data-default="Watch" style="flex:1;text-decoration:none;color:var(--color-text);text-align:center;padding:11px 4px;font-family:var(--font-heading);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:0.03em;border-right:1px solid var(--color-divider);display:flex;align-items:center;justify-content:center">Watch</a>
-  <a href="giving.dc.html" style="flex:1;text-decoration:none;color:var(--color-bg);background:var(--color-accent);text-align:center;padding:11px 4px;font-family:var(--font-heading);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:0.03em">Give</a>
+  <a href="giving.dc.html" style="flex:1;text-decoration:none;color:var(--color-bg);background:var(--color-accent-700);text-align:center;padding:11px 4px;font-family:var(--font-heading);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:0.03em">Give</a>
 </div>
 
 <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
@@ -138,7 +138,7 @@ class Component extends DCLogic {
     const map = { about:0, visit:1, groups:2, hteams:3, ministries:4, events:5 };
     const i = map[active];
     if (i !== undefined && this['_l'+i]) {
-      this['_l'+i].style.color = 'var(--color-accent)';
+      this['_l'+i].style.color = 'var(--color-accent-700)';
       this['_l'+i].setAttribute('aria-current','page');
     }
     const mq = window.matchMedia('(max-width: 900px)');
@@ -200,7 +200,7 @@ class Component extends DCLogic {
     this._resultsBox.innerHTML = label + items.map(it => (
       '<a href="' + it.url + '" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:var(--color-text);padding:13px var(--space-4);border-bottom:1px solid var(--color-divider)">' +
         '<span style="font-family:var(--font-heading);font-weight:700;font-size:15px">' + it.title + '</span>' +
-        '<span style="font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--color-accent);flex:none">' + it.cat + '</span>' +
+        '<span style="font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--color-accent-700);flex:none">' + it.cat + '</span>' +
       '</a>'
     )).join('');
   }
