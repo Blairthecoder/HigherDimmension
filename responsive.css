@@ -841,3 +841,14 @@ h1 em, h2 em { font-family: inherit; font-style: normal; font-weight: inherit; c
   .hd-footer-links { grid-template-columns: 1fr; }
   .hd-dates strong { font-size: 18px; }
 }
+
+/* Breadcrumbs: align links and current page on one baseline, keep a comfortable tap area */
+.hd-crumbs { align-items: center; gap: 0 8px; }
+.hd-crumbs li { display: inline-flex; align-items: center; min-height: 32px; line-height: 1.2; }
+.hd-crumbs li + li:before { display: inline-block; margin-right: 8px; line-height: 1; }
+.hd-crumbs a { min-height: 0; display: inline-flex; align-items: center; padding-block: 8px; }
+@media (max-width: 700px) {
+  .hd-crumbs { margin-bottom: 8px; font-size: 14px; }
+  .hd-crumbs li { min-height: 40px; }
+  .hd-crumbs a { min-height: 40px; padding-block: 0; }
+}
