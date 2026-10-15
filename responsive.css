@@ -746,3 +746,37 @@ h1 em, h2 em { font-family: inherit; font-style: normal; font-weight: inherit; c
 .hd-notes-open h3 { margin: 0 0 8px; font-size: 14px; }
 .hd-notes-open ul { margin: 0; padding-left: 18px; color: var(--color-muted); font-size: 15px; }
 .hd-notes-open li { margin-bottom: 6px; }
+
+/* Fact panels: keep padding when the list itself is the panel */
+.hd-fact-list.hd-page-media-panel { padding: 10px 28px; margin: 0; }
+.hd-page-media-panel > .hd-kicker + .hd-fact-list { padding: 0; }
+
+/* Touch targets and overflow fixes from the full-site check */
+.hd-visit-grid > *, .hd-latest > *, .hd-split > *, .hd-page-hero > *, .hd-card-grid > * { min-width: 0; }
+.hd-contact-card .hd-actions .hd-button { flex: 1 1 auto; }
+.hd-contact-card address { overflow-wrap: anywhere; }
+.hd-footer-links a { padding-block: 6px; }
+.hd-service-ribbon a { padding-block: 8px; }
+.hd-text-link, .hd-card-link, .hd-campus-actions a, .hd-step a { display: inline-flex; align-items: center; min-height: 44px; }
+.hd-text-link { padding-block: 0; }
+.hd-crumbs a { display: inline-flex; align-items: center; min-height: 32px; }
+@media (max-width: 700px) {
+  .hd-footer-links { gap: 20px 24px; }
+  .hd-footer-links div { gap: 0; }
+  .hd-footer-links a { display: flex; align-items: center; min-height: 44px; padding-block: 0; }
+  .hd-footer-bottom a { display: inline-flex; align-items: center; min-height: 44px; }
+  .hd-service-ribbon { min-height: 40px; }
+  .hd-campus-actions { gap: 0; }
+  .hd-give-link, .hd-desktop-nav a { min-height: 44px; }
+}
+
+.hd-give-card .hd-tag { align-self: flex-start; }
+
+.hd-notes-wide { margin-top: clamp(28px, 4vw, 44px); max-width: 860px; }
+.hd-notes-wide li { font-size: 16px; line-height: 1.6; }
+.hd-notes h4 { margin: 14px 0 8px; font-size: 14px; }
+.hd-notes > p { color: var(--color-muted); font-size: 15.5px; }
+.hd-latest-copy > p { font-size: 16px; line-height: 1.65; }
+
+.hd-contact-card p, .hd-footer-lead address { overflow-wrap: anywhere; }
+@media (max-width: 700px) { .hd-crumbs a { min-height: 40px; } .hd-service-ribbon a { padding-block: 11px; } }
