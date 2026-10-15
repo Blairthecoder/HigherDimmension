@@ -780,3 +780,64 @@ h1 em, h2 em { font-family: inherit; font-style: normal; font-weight: inherit; c
 
 .hd-contact-card p, .hd-footer-lead address { overflow-wrap: anywhere; }
 @media (max-width: 700px) { .hd-crumbs a { min-height: 40px; } .hd-service-ribbon a { padding-block: 11px; } }
+
+/* ───────── Tablet range (701px to 980px): use the width instead of stretching the phone layout ───────── */
+@media (min-width: 701px) and (max-width: 980px) {
+  .hd-steps, .hd-card-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .hd-card-grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .hd-card-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .hd-step, .hd-card { padding: 22px; }
+  .hd-campus-grid, .hd-partner-grid { grid-template-columns: repeat(2, 1fr); }
+  .hd-campus-grid > :last-child:nth-child(odd), .hd-partner-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .hd-path-grid { grid-template-columns: 1fr 1fr; }
+  .hd-path-image { grid-column: 1 / -1; min-height: 420px; }
+  .hd-path-wide { grid-column: 1 / -1; }
+  .hd-story-image { min-height: 0; }
+  .hd-story-image-contain img { aspect-ratio: 16 / 10; max-height: 460px; object-position: center 12%; }
+  .hd-message-art { min-height: 380px; }
+  .hd-page-hero { grid-template-columns: 1.15fr .85fr; gap: 32px; align-items: center; }
+  .hd-page-hero h1 { font-size: clamp(36px, 5.4vw, 48px); }
+  .hd-page-media { justify-self: stretch; width: 100%; }
+  .hd-page-media img { max-height: 420px; }
+  .hd-page-media-panel, .hd-fact-list.hd-page-media-panel { padding: 22px; }
+  .hd-fact-list.hd-page-media-panel { padding: 8px 22px; }
+  .hd-split, .hd-split-reverse { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .hd-split-reverse .hd-split-media { order: 2; }
+  .hd-split-media { max-width: none; }
+  .hd-split-media-blue, .hd-split-media img { aspect-ratio: 4 / 5; max-height: 460px; }
+  .hd-faith { grid-template-columns: 1fr; }
+  .hd-schedule-row { grid-template-columns: 150px 1fr; align-items: start; }
+  .hd-schedule-row .hd-button { grid-column: 2; justify-self: start; }
+  .hd-visit-grid { grid-template-columns: 1fr 1fr; }
+  .hd-give-grid { grid-template-columns: 1fr 1fr; }
+  .hd-footer-shell { grid-template-columns: 1fr 1.3fr; gap: 40px; }
+  .hd-visit-panel { grid-template-columns: .8fr 1.2fr; padding-inline: 28px; }
+  .hd-visit-photo { width: 100%; }
+  .hd-latest { grid-template-columns: 1fr; }
+  .hd-timeline li { grid-template-columns: 110px 1fr; }
+  .hd-timeline:before { left: 110px; }
+  .hd-timeline li:before { left: 103px; }
+}
+/* Small laptops and large tablets landscape: keep the nav from crowding */
+@media (min-width: 981px) and (max-width: 1100px) {
+  .hd-nav-shell { gap: 16px; }
+  .hd-desktop-nav { gap: 14px; }
+  .hd-nav-actions { gap: 12px; }
+  .hd-nav-visit { padding: 10px 12px; gap: 8px; }
+}
+/* Very small phones */
+@media (max-width: 360px) {
+  .hd-hero-copy h1 { font-size: 36px; }
+  .hd-page-hero h1, .hd-intro h2 { font-size: 34px; }
+  .hd-section-heading h2, .hd-story-copy h2, .hd-message-copy h2, .hd-visit-copy h2, .hd-revival h2, .hd-split-copy h2 { font-size: 28px; }
+  .hd-final h2 { font-size: 32px; }
+  .hd-brand strong { font-size: 13px; }
+  .hd-brand small { letter-spacing: .18em; }
+  .hd-service-ribbon { font-size: 10px; letter-spacing: .05em; }
+  .hd-button { padding: 0 16px; font-size: 14px; }
+  .hd-mobile-menu nav a { font-size: 17px; }
+  .hd-fact-list li { flex-direction: column; gap: 2px; }
+  .hd-fact-list strong { text-align: left; }
+  .hd-footer-links { grid-template-columns: 1fr; }
+  .hd-dates strong { font-size: 18px; }
+}
