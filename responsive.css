@@ -704,3 +704,19 @@ h1 em, h2 em { font-family: inherit; font-style: normal; font-weight: inherit; c
 .hd-revival h2 em { font-family: inherit; font-style: normal; font-weight: inherit; letter-spacing: inherit; }
 .hd-page-media img { max-height: 540px; object-position: center 15%; }
 .hd-page-media-wide img { max-height: none; }
+
+/* Social links in the header */
+.hd-social { display: inline-flex; align-items: center; gap: 4px; padding-right: 14px; margin-right: 2px; border-right: 1px solid var(--color-divider); }
+.hd-social-link { width: 40px; height: 40px; display: inline-grid; place-items: center; border-radius: 6px; color: var(--color-text); }
+.hd-social-link:hover { background: var(--color-surface); color: var(--color-fire-text); }
+.hd-social-mobile { display: flex; border: 0; padding: 0; margin: 0 0 16px; gap: 8px; }
+.hd-social-mobile .hd-social-link { width: 48px; height: 48px; border: 1px solid var(--color-divider); }
+@media (max-width: 1120px) { .hd-social { padding-right: 10px; } }
+
+/* Menu button: lines centered so the close icon forms a clean X */
+.hd-menu-button { position: relative; }
+.hd-menu-button span { position: absolute; left: 50%; top: 50%; width: 18px; height: 2px; margin: -1px 0 0 -9px; }
+.hd-menu-button span:first-child { transform: translateY(-4px); }
+.hd-menu-button span:last-child { transform: translateY(4px); }
+.hd-menu-button[aria-expanded="true"] span:first-child { transform: rotate(45deg); }
+.hd-menu-button[aria-expanded="true"] span:last-child { transform: rotate(-45deg); }
