@@ -910,3 +910,13 @@ h1 em, h2 em { font-family: inherit; font-style: normal; font-weight: inherit; c
   .hd-lb { padding: 52px 8px 16px; }
   .hd-lb img { max-height: calc(100vh - 160px); }
 }
+
+/* Five social icons: keep the header from crowding on small laptops */
+@media (min-width: 981px) and (max-width: 1280px) {
+  .hd-social-link { width: 34px; height: 34px; }
+  .hd-social { gap: 0; padding-right: 10px; }
+}
+@media (max-width: 700px) {
+  .hd-social-mobile { flex-wrap: wrap; }
+  .hd-social-mobile .hd-social-link { width: 46px; height: 46px; }
+}
