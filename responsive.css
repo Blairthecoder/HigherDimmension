@@ -852,3 +852,5 @@ h1 em, h2 em { font-family: inherit; font-style: normal; font-weight: inherit; c
   .hd-crumbs li { min-height: 40px; }
   .hd-crumbs a { min-height: 40px; padding-block: 0; }
 }
+
+.hd-eyebrow span { display: none; }
